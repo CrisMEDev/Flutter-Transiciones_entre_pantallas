@@ -31,7 +31,7 @@ class Pagina1 extends StatelessWidget {
     return PageRouteBuilder(
       pageBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) => Pagina2(),
       transitionDuration: Duration( milliseconds: 2000 ),
-      reverseTransitionDuration: Duration( milliseconds: 1000 ),
+      reverseTransitionDuration: Duration( milliseconds: 2000 ),
       transitionsBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child){
 
         final curveAnimation = CurvedAnimation(parent: animation, curve: Curves.easeInOut);
@@ -46,10 +46,24 @@ class Pagina1 extends StatelessWidget {
         //   child: child,
         // );
         
+        // return RotationTransition(
+        //   turns: Tween<double>( begin: 0.0, end: 1.0 ).animate(curveAnimation),
+        //   child: child,
+        // );
+        
+        // return FadeTransition(
+        //   opacity: Tween<double>( begin: 0.0, end: 1.0 ).animate(curveAnimation),
+        //   child: child,
+        // );
+        
         return RotationTransition(
           turns: Tween<double>( begin: 0.0, end: 1.0 ).animate(curveAnimation),
-          child: child,
+          child: FadeTransition(
+            opacity: Tween<double>( begin: 0.0, end: 1.0 ).animate(curveAnimation),
+            child: child,
+          ),
         );
+
 
       }
     );
