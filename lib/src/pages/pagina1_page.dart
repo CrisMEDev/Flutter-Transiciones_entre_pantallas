@@ -35,9 +35,14 @@ class Pagina1 extends StatelessWidget {
 
         final curveAnimation = CurvedAnimation(parent: animation, curve: Curves.easeInOut);
 
-        return SlideTransition(
-          position: Tween<Offset>( begin: Offset(0.5, 1.0), end: Offset.zero ).animate(curveAnimation),
-          child: child,   // La pagina2
+        // return SlideTransition(
+        //   position: Tween<Offset>( begin: Offset(0.5, 1.0), end: Offset.zero ).animate(curveAnimation),
+        //   child: child,   // La pagina2
+        // );
+        
+        return ScaleTransition(
+          scale: Tween<double>( begin: 0.0, end: 1.0 ).animate(curveAnimation),
+          child: child,
         );
 
       }
