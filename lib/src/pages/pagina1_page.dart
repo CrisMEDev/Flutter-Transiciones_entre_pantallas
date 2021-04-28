@@ -30,7 +30,8 @@ class Pagina1 extends StatelessWidget {
 
     return PageRouteBuilder(
       pageBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) => Pagina2(),
-      // transitionDuration: Duration( milliseconds: 2000 ),
+      transitionDuration: Duration( milliseconds: 2000 ),
+      reverseTransitionDuration: Duration( milliseconds: 1000 ),
       transitionsBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child){
 
         final curveAnimation = CurvedAnimation(parent: animation, curve: Curves.easeInOut);
@@ -40,8 +41,13 @@ class Pagina1 extends StatelessWidget {
         //   child: child,   // La pagina2
         // );
         
-        return ScaleTransition(
-          scale: Tween<double>( begin: 0.0, end: 1.0 ).animate(curveAnimation),
+        // return ScaleTransition(
+        //   scale: Tween<double>( begin: 0.0, end: 1.0 ).animate(curveAnimation),
+        //   child: child,
+        // );
+        
+        return RotationTransition(
+          turns: Tween<double>( begin: 0.0, end: 1.0 ).animate(curveAnimation),
           child: child,
         );
 
